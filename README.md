@@ -1,25 +1,32 @@
-# README
+<p align="center">
+  <a href="https://tonystrawberry.codes/">
+    <img src="https://cdn-icons-png.flaticon.com/256/4388/4388554.png" width="60" />
+  </a>
+</p>
+<h1 align="center">
+  Quote Editor (powered by Hotwire)
+</h1>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![Coverage Status](https://coveralls.io/repos/github/tonystrawberry/quote-editor/badge.svg)](https://coveralls.io/github/tonystrawberry/quote-editor)
 
-Things you may want to cover:
 
-* Ruby version
+This application is a simple quote editor that allows users to create, edit, and delete quotes. I followed the tutorial from [Hotrails](https://www.hotrails.dev/turbo-rails) to build this application. The tutorial has been a great introduction to **Hotwire** and how to use it to make an **SPA with Rails without using JavaScript**.
 
-* System dependencies
+## Setup ⚙️
 
-* Configuration
+```
+  bundle install
+  rails db:create db:migrate db:seed
+```
 
-* Database creation
+## Running the application 🚀
 
-* Database initialization
+```
+  bin/dev
+```
 
-* How to run the test suite
+## Running the tests 🧪
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# quote-editor
+```
+  bin/rails test:all
+```
