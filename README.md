@@ -12,6 +12,8 @@
 
 This application is a simple quote editor that allows users to create, edit, and delete quotes. I followed the tutorial from [Hotrails](https://www.hotrails.dev/turbo-rails) to build this application. The tutorial has been a great introduction to **Hotwire** and how to use it to make an **SPA with Rails without using JavaScript**.
 
+Deployed with **Fly.io** https://quote-editor-cool-snow-3844.fly.dev/
+
 ## Setup ⚙️
 
 ```
@@ -30,3 +32,7 @@ This application is a simple quote editor that allows users to create, edit, and
 ```
   bin/rails test:all
 ```
+
+## Test accounts
+
+Test accounts can be found in the `test/fixtures/users.yml` file. Please use the credentials in that file to log in.
