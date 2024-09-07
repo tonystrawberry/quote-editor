@@ -26,6 +26,8 @@ jobs:
         gem install bundler
         bundle install
     - name: Setup database
+      env:
+        RAILS_ENV: test
       run: |
         bundle exec rake db:create
         bundle exec rake db:schema:load
