@@ -1,0 +1,49 @@
+name: CI
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: quote_editor_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    env:
+      USER: postgres
+      RAILS_ENV: test
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/quote_editor_test
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ".ruby-version"
+    - name: Install dependencies
+      run: |
+        gem install bundler
+        bundle install
+    - name: Setup database
+      env:
+        RAILS_ENV: test
+      run: |
+        bundle exec rake db:create
+        bundle exec rake db:schema:load
+    - name: Run tests
+      run: |
+        bin/rails test:all
+    - name: Coveralls GitHub Action
+      uses: coverallsapp/github-action@v2.3.0
