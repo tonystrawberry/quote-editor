@@ -8,12 +8,23 @@ jobs:
 
     services:
       postgres:
-        image: postgres:16.3
+        image: postgres:13
         env:
           POSTGRES_USER: postgres
-          POSTGRES_HOST_AUTH_METHOD: trust
-        ports: ['5432:5432']
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: quote_editor_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    env:
+      USER: postgres
+      RAILS_ENV: test
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/quote_editor_test
 
     steps:
     - uses: actions/checkout@v2
